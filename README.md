@@ -1,2 +1,2 @@
-# PRACTICA03_230496
-Repaso de concepto de manejo de sesiones
+# Practica03_230369
+Repaso de control de sesiones
