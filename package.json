@@ -1,5 +1,5 @@
 {
-  "name": "mx.utxj.awid4.230369.practica03",
+  "name": "mx.utxj.awid4.230496.practica03",
   "version": "1.0.0",
   "description": "Repaso de Manejo de Sesiones",
   "main": "index.js",
@@ -10,11 +10,12 @@
     "Express",
     "Session"
   ],
-  "author": "Tania Ibarra Salgado",
+  "author": "Edgar Cabrera",
   "license": "ISC",
   "dependencies": {
     "crypto": "^1.0.1",
     "express": "^4.21.2",
-    "express-session": "^1.18.1"
+    "express-session": "^1.18.1",
+    "moment-timezone": "^0.5.46"
   }
 }
