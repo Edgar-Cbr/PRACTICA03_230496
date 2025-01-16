@@ -7,35 +7,22 @@ const { read } = require('fs');
 const app=express();
 
 app.use(session({
-    secret: 'pqerienv-69ff-dgrtss#',
+    secret: 'p3-ECV#tres-sesionespersistentes',
     resave: false,
     saveUninitialized: true, 
     cookie: {secure:false, maxAge: 24*60*60*1000} //Usar secure: true solo si usas https, maxAge permite definir la duración de la sesión 24 horas
 }));
 
-/*app.use((req, res, next) => {
-    if(req.session){
-        if(!req.session.createAt){
-            req.session.createAt = new Date();
-            req.session.id = crypto.randomUUID();
-        }
-        req.session.lastAcess = new Date();
-    }
-    next();
-});*/
 
-app.get('/login/:name', (req ,res) =>{
-    const userName = req.params.name;
+app.get('/login/:nombre', (req ,res) =>{
+    const userName = req.params.nombre;
     if(!req.session.createAt){
         req.session.userName = userName;
         req.session.createAt= new Date();
         req.session.lastAcess= new Date ();
-        //req.session.createAt = new Date();
-        //req.session.lastAcess= new Date();
         res.send(`
             <h1>Bienvenido, tu sesión ha sido iniciada</h1>
-            <p><strong>Nombre de usuario: </strong> ${userName}</p>
-            <p><a href="/session">Ir a detalles de la sesión</a></p>
+            <h1><strong>Nombre de usuario: </strong> ${userName}</h1>
             `)
     }else{
         res.send('<h1>Ya existe una sesión</h1>')
@@ -96,12 +83,10 @@ app.get('/session', (req, res)=>{
         <p><strong>Fecha de creación de la sesión:</strong> ${createAt}</p>
         <p><strong>Último acceso:</strong> ${lastAcess}</p>
         <p><strong>Duración de la sesión (en segundos): </strong> ${sessionDuration}</p>
-        <p><a href="/logout">Cerrar sesión</a></p>
         `)
     }else{
         res.send(`
             <h1>No hay sesión activa.</h1>
-            <p><a href="/login/Invitado">Iniciar sesión como Invitado</a></p>
             `);
         }
     });
